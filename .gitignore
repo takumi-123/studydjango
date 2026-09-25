@@ -1,0 +1,9 @@
+# 機密情報
+.env
+#キャッシュ削除
+__pycache__/
+*.pyc
+# dbliteファイル混ざるの阻止
+db.sqlite3
+# Djangoの本番用ファイル集約フォルダーガード
+staticfiles/

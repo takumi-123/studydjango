@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mysql:8.0
+    environment: # &{}はignoreの.env
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD} # ここを修正！
+    ports:
+      - "3306:3306" # インデントを修正！
+    volumes: # コンテナ停止、削除してもきえないよ（volumsをvolumesに修正）
+      - db_data:/var/lib/mysql # db_date を db_data に統一！
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000 # 8080から8000に合わせました！
+    volumes: # volumsをvolumesに修正
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on: # dbの後Django
+      - db
+    env_file: # Djangoでも.envファイル使えるように
+      - .env
+
+volumes: # Docker全体で共有管理（volumsをvolumesに修正）
+  db_data:
