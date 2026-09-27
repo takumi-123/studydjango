@@ -1,0 +1,27 @@
+{% load static %}
+<!--cssの時djangoはこれ必要-->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カフェ一覧</title>
+    <link rel="stylesheet" href="{% static 'cafe/style.css' %}" />
+  </head>
+  <body>
+    <h1>マイカフェログ</h1>
+    <p>現在登録されているカフェ一覧です</p>
+    <ul>
+      {% for cafe in cafes %}
+      <li>
+        <strong>{{ cafe.name }}</strong> （{{ cafe.area }} /
+        ジャンル:{{cafe.genre }}）<br />
+        評価: {{ cafe.rating }}点 | おすすめ: {{ cafe.recommend_menu }}<br />
+      </li>
+      <hr />
+      {% empty %}
+      <li>まだカフェが登録されていません</li>
+      {% endfor%}
+    </ul>
+  </body>
+</html>
