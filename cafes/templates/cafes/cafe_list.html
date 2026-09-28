@@ -11,12 +11,20 @@
   <body>
     <h1>マイカフェログ</h1>
     <p>現在登録されているカフェ一覧です</p>
+
+    <p><a href="{% url 'cafe_new' %}">新規カフェ登録</a></p>
     <ul>
       {% for cafe in cafes %}
       <li>
         <strong>{{ cafe.name }}</strong> （{{ cafe.area }} /
         ジャンル:{{cafe.genre }}）<br />
         評価: {{ cafe.rating }}点 | おすすめ: {{ cafe.recommend_menu }}<br />
+
+        <!-- 編集、削除リンク追加-->
+        <p>
+          <a href="{% url 'cafe_edit' cafe.pk %}">編集</a>
+          <a href="{% url 'cafe_delete' cafe.pk %}">削除</a>
+        </p>
       </li>
       <hr />
       {% empty %}
