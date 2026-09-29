@@ -8,5 +8,5 @@ urlpatterns = [ # path(住所, views.pyの関数, 名前)
 
     # 編集と削除
     path('cafe/<int:pk>/edit/', cafe_edit, name='cafe_edit'),
-    path('/cafe/<int:pk>/delete/', cafe_delete, name='cafe_delete'),
+    path('cafe/<int:pk>/delete/', cafe_delete, name='cafe_delete'),
 ]

@@ -23,7 +23,10 @@
         <!-- 編集、削除リンク追加-->
         <p>
           <a href="{% url 'cafe_edit' cafe.pk %}">編集</a>
-          <a href="{% url 'cafe_delete' cafe.pk %}">削除</a>
+          <form action="{% url 'cafe_delete' cafe.pk %}" method="POST" class="delete-form" data-cafe-name="{{ cafe.name }}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="background:none; border:none; color:red; cursor:pointer; padding:0; text-decoration:underline;">削除</button>
+          </form>
         </p>
       </li>
       <hr />
@@ -31,5 +34,6 @@
       <li>まだカフェが登録されていません</li>
       {% endfor%}
     </ul>
+    <script src="{% static 'cafe/main.js' %}"></script>
   </body>
 </html>
