@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>本棚アプリ</title>
+
+    <!-- Google Fonts（不要なら消してもOKです） -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 💡 外部CSSファイルの読み込みを復活！ -->
+    <link rel="stylesheet" href="{% static 'books/style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>マイ本棚</h1>
+        <p class="subtitle">これまでよんだお気に入りの本たち</p>
+      </header>
+
+      <main>
+        <ul class="book-list">
+          <!-- 💡 修正: for 1冊 in 複数の箱 -->
+          {% for book in books %}
+          <!-- 💡 修正: class名も book-card に統一 -->
+          <li class="book-card">
+            <div class="book-info">
+              <h2>{{ book.title }}</h2>
+              <div class="book-meta">
+                著者: {{ book.author }} {% if book.review %}
+                <br />感想: {{ book.review }} {% endif %}
+              </div>
+            </div>
+            <div class="rating-badge">★ {{ book.rating }} / 5</div>
+          </li>
+          {% empty %}
+          <li class="empty-state">
+            <p>まだ登録されている本がありません。管理画面から追加しよう</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </main>
+    </div>
+  </body>
+</html>
