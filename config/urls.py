@@ -17,13 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include # include追加
 
+# http://localhost:8000/booksならbooksファルダへ
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include('django.contrib.auth.urls')), # 追加
+    path('books/', include('books.urls')),
+    path('account/', include('django.contrib.auth.urls')), # ログインのとき便利
     path('', include('cafes.urls')), # 追加
+    path('accounts/', include('accounts.urls')),
 ]
 # ログイン成功後にジャンプするURL（トップのカフェ一覧画面）
 LOGIN_REDIRECT_URL = '/'
 
 # ログアウトしたあとにジャンプするURL
 LOGOUT_REDIRECT_URL = '/'
+
+# ログイン成功時移動するページ
+LOGIN_REDIRECT_URL = '/books/'
+
+# ログアウトした後のページ
+LOGOUT_REDIRECT_URL ='/accounts/loguin'

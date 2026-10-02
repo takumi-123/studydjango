@@ -21,3 +21,53 @@ h1 {
   color: #4f46e5;
   margin-bottom: 10px;
 }
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-info h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  color: #111827;
+}
+
+.book-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.rating-badge {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  color: #6b7280;
+}
