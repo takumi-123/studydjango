@@ -24,6 +24,7 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')), # ログインのとき便利
     path('', include('cafes.urls')), # 追加
     path('accounts/', include('accounts.urls')),
+    path('chapp/', include('chapp.urls')),
 ]
 # ログイン成功後にジャンプするURL（トップのカフェ一覧画面）
 LOGIN_REDIRECT_URL = '/'

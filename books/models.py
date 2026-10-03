@@ -1,8 +1,12 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 
 class Book(models.Model):
+
+    # 誰が登録した本か こおのユーザーが消えたらこのユーザーも消える
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="ユーザー名")
+
     title = models.CharField(max_length=100, verbose_name="本のタイトル")
     author = models.CharField(max_length=100, verbose_name="著者名")
     rating = models.IntegerField(default=3, verbose_name="評価(1~5)")
